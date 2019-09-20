@@ -20,5 +20,20 @@ public class ProjectTaskService {
 		}
 		return projectTaskRepository.save(projectTask);
 	}
+	
+	public Iterable<ProjectTask> findAll(){
+		return projectTaskRepository.findAll();
+	}
+	
+	public ProjectTask findById(Long id) {
+		return projectTaskRepository.getById(id);
+	}
+	
+	public void delete(Long id) {
+		ProjectTask projectTask = findById(id);
+		projectTaskRepository.delete(projectTask);
+	}
+	
+	
 
 }

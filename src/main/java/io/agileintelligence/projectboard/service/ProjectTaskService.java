@@ -34,6 +34,26 @@ public class ProjectTaskService {
 		projectTaskRepository.delete(projectTask);
 	}
 	
+	public ProjectTask updatePT(Long pt_id,ProjectTask projectTask){    
+        
+        if(projectTaskRepository.findById(pt_id).isPresent()) {
+            ProjectTask task = projectTaskRepository.findById(pt_id).get();
+            
+            task.setAcceptanceCriteria(projectTask.getAcceptanceCriteria());
+            task.setSummary(projectTask.getSummary());
+            task.setStatus(projectTask.getStatus());
+            
+            ProjectTask updatedTask = projectTaskRepository.save(task);
+            
+            return updatedTask;
+        }
+        
+        else {
+            return null;
+        }
+        
+    }
+	
 	
 
 }
